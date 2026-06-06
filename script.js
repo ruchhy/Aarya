@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, {
-        threshold: 0.15,
+        threshold: 0.05,
         rootMargin: '0px 0px -50px 0px'
     });
 
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroSubtitle = document.querySelector('.hero-subtitle');
     const heroCtas = document.querySelector('.hero-ctas');
 
-    window.addEventListener('scroll', () => {
+    const handleHeroScroll = () => {
         const scrollY = window.scrollY;
         const fadeValue = Math.max(1 - scrollY / 500, 0);
         const transformValue = - (scrollY * 0.15); // moves up gently
@@ -126,6 +126,10 @@ document.addEventListener('DOMContentLoaded', () => {
             heroCtas.style.opacity = fadeValue;
             heroCtas.style.transform = `translateY(${transformValue}px)`;
         }
-    });
+    };
+
+    window.addEventListener('scroll', handleHeroScroll);
+    // Initialize hero elements styling immediately on page load
+    handleHeroScroll();
 
 });
